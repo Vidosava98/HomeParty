@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link rel="stylesheet" href="../stilovi/style.css" />
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+      <a class="navbar-brand" href="#">Kućne žurke</a>
+
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/dashboard">Početna</a>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <a href="/users/logout" class="btn btn-secondary">Odjavi se</a>
+        </form>
+      </div>
+    </nav>
+    <form
+      action="/zurke/organizujzurku"
+      method="POST"
+      enctype="multipart/form-data"
+    >
+      <div class="whole">
+        <div class="zakazivanje red">
+          <div class="card carddd" style="width: 18rem;">
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default"
+                  >Organizator</span
+                >
+              </div>
+              <input
+                type="text"
+                class="form-control"
+                aria-label="Sizing example input"
+                value="<%=name%>"
+                id="organizator"
+                name="organizator"
+                aria-describedby="inputGroup-sizing-default"
+              />
+            </div>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default"
+                  >Adresa</span
+                >
+              </div>
+              <input
+                type="text"
+                class="form-control"
+                aria-label="Sizing example input"
+                id="adresa"
+                name="adresa"
+                aria-describedby="inputGroup-sizing-default"
+              />
+            </div>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default"
+                  >Vreme</span
+                >
+              </div>
+              <select type="text" id="vreme" name="vreme" class="form-control">
+                <option>18:00</option>
+                <option>19:00</option>
+                <option>20:00</option>
+                <option>21:00</option>
+                <option>22:00</option>
+                <option>23:00</option>
+                <option>24:00</option>
+              </select>
+            </div>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default"
+                  >Datum</span
+                >
+              </div>
+              <input
+                type="date"
+                class="form-control"
+                aria-label="Sizing example input"
+                id="datum"
+                name="datum"
+                aria-describedby="inputGroup-sizing-default"
+              />
+            </div>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default"
+                  >Muzika</span
+                >
+              </div>
+              <select
+                type="text"
+                id="muzika"
+                name="muzika"
+                class="form-control"
+              >
+                <option>Disco</option>
+                <option>Pop</option>
+                <option>Rock</option>
+                <option>Trap</option>
+                <option>RnB</option>
+                <option>Salsa</option>
+                <option>Folk</option>
+                <option>Pank</option>
+              </select>
+            </div>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default"
+                  >Broj ljudi</span
+                >
+              </div>
+              <input
+                type="number"
+                class="form-control"
+                aria-label="Sizing example input"
+                id="brojljudi"
+                name="brojljudi"
+                aria-describedby="inputGroup-sizing-default"
+              />
+            </div>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default"
+                  >Slika</span
+                >
+              </div>
+              <input
+                type="file"
+                class="form-control"
+                aria-label="Sizing example input"
+                id="slikaZurke"
+                name="slikaZurke"
+                aria-describedby="inputGroup-sizing-default"
+              />
+            </div>
+            <div>
+              <button
+                type="submit"
+                style="background-color: rgba(216, 97, 97, 0.8);"
+                class="btn btn-block btnnovi btn-primary"
+              >
+                Organizuj
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </body>
+</html>

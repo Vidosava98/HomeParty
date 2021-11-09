@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link rel="stylesheet" href="../stilovi/style.css" />
+    <!-- Bootstrap CSS -->
+    <script
+      src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"
+      type="text/javascript"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+      <a class="navbar-brand" href="#">Kucne zurke</a>
+
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/dashboard">Pocetna</a>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <a href="/users/logout" class="btn btn-secondary">Odjavi se</a>
+        </form>
+      </div>
+    </nav>
+
+    <div class="row mt-5">
+      <div class="col-md-6 m-auto">
+        <div class="card card-body">
+          <h1 class="text-center mb-3">
+            <div class="spinner-grow text-secondary" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+            <svg
+              width="1em"
+              height="1em"
+              viewBox="0 0 16 16"
+              class="bi bi-info-circle-fill"
+              fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM8 5.5a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"
+              />
+            </svg>
+            Informacije o žurci
+            <svg
+              width="1em"
+              height="1em"
+              viewBox="0 0 16 16"
+              class="bi bi-info-circle-fill"
+              fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM8 5.5a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"
+              />
+            </svg>
+            <div class="spinner-grow text-secondary" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+          </h1>
+
+          <table class="table table-striped table-dark">
+            <thead>
+              <tr>
+                <th scope="col">Organizator žurke</th>
+                <th scope="col">Adresa na kojoj se žurka održava</th>
+                <th scope="col">Datum održavanja žurke</th>
+                <th scope="col">Vreme održavanja žurke</th>
+                <th scope="col">Muzika</th>
+                <th scope="col">Preostali broj slobodnih mesta</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><%=zurka.organizator%></td>
+                <td><%=zurka.adresa%></td>
+                <td><%=zurka.datum%></td>
+                <td><%=zurka.vreme%></td>
+                <td><%=zurka.muzika%></td>
+                <td><%=zurka.brojljudi%></td>
+              </tr>
+            </tbody>
+          </table>
+
+           <form action="/zurke/komentarisi" method="POST" >
+            <div class="form-group">
+               <label for="comment">Komentari</label>
+                  <input
+                      type="comment"
+                      id="comment"
+                      name="comment"
+                      class="form-control"
+                      placeholder="Unesite komentar"
+                   />
+                <input type="text" class="nevidljivo" id="_id" name="_id" value=<%=zurka._id%>>
+                <input id="name" class="nevidljivo" name="name" value=<%=name%>>
+                <input class="nevidljivo" name="datum" value=<%=zurka.datum%>>
+                 <button type="submit" style="float: left;" class="btn btnnovi btn-primary">Komentarisi</button>
+             </div>
+
+          <table class="table table-bordered">
+            <caption>Komentare mogu postaviti samo korisnici koji su prisustvovali žurkama</caption>
+            <thead>
+              <tr>
+              
+              <th>Korisnicko ime</th>
+              <th>Komentar</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% zurka.komentari.forEach(komentar=>{ %>
+              <tr>
+              <td>
+              <%=komentar.name %> 
+              </td>
+              <td>
+               <%=komentar.comment %> 
+              </td>
+              <% }) %>
+              </tr>
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

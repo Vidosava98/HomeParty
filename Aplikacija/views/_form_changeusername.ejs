@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="../stilovi/style.css">
+  </head>
+  <body>
+    <form action="/users/changeusername" method="POST">
+          <form style="display:flex; flex-grow: 1; justify-content: center;">
+            <div class="izmeniprofil">
+            <!--<div class="input-group mb-3">             
+                <div class="custom-file">
+                  <input type="file" class="custom-file-input" id="inputGroupFile02">
+                  <label class="custom-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">Choose file</label>
+                </div>
+                <div class="input-group-append">
+                  <span class="input-group-text" id="inputGroupFileAddon02">Upload</span>
+                </div>
+              </div>-->
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">@</span>
+                </div>
+                <input id="namechange" name="namechange" type="text" class="form-control rounded-right" required>
+                <div class="invalid-feedback">
+                  Izaberite svoje novo korisničko ime.
+                </div>
+              </div>
+              <input class="nevidljivo" name="name" value="<%=name%>"></input>
+              <button type="submit" style="width: 50%; margin-top: 2%; align-self: center;" class="btn btn-primary">Izmeni ime</button>
+            </div>
+          </form>  
+  </body>
+</html>

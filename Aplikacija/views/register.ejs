@@ -1,0 +1,77 @@
+<div class="row mt-5">
+  <div class="col-md-6 m-auto">
+    <div class="card card-body">
+      <h1 class="text-center mb-3">
+        <i class="fas fa-user-plus"></i> Registracija
+      </h1>
+      <%- include('./partials/messages.ejs') %>
+      <form action="/users/register" method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+          <label for="name">Korsičnisko ime</label>
+          <input
+            type="name"
+            id="name"
+            name="name"
+            class="form-control"
+            placeholder="Unesite korisničko ime"
+            value="<%= typeof name != 'undefined' ? name : '' %>"
+          />
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            class="form-control"
+            placeholder="Unesite email"
+            value="<%= typeof email != 'undefined' ? email : '' %>"
+          />
+        </div>
+        <div class="form-group">
+          <label for="password">Lozinka</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            class="form-control"
+            placeholder="Unesite lozinku"
+            value="<%= typeof password != 'undefined' ? password : '' %>"
+          />
+        </div>
+        <div class="form-group">
+          <label for="password2">Potvrdite lozinku</label>
+          <input
+            type="password"
+            id="password2"
+            name="password2"
+            class="form-control"
+            placeholder="Ponovo unesite lozinku"
+            value="<%= typeof password2 != 'undefined' ? password2 : '' %>"
+          />
+        </div>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default"
+              >Slika</span
+            >
+          </div>
+          <input
+            type="file"
+            class="form-control"
+            aria-label="Sizing example input"
+            id="slikaKorisnika"
+            name="slikaKorisnika"
+            aria-describedby="inputGroup-sizing-default"
+          />
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">
+          Registruj se
+        </button>
+      </form>
+      <p class="lead mt-4">
+        Već imate nalog? <a href="/users/login">Prijavite se</a>
+      </p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="../stilovi/style.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="stilovi/style.css">
+  </head>
+  <body>
+    
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    
+  <a class="navbar-brand" href="#">Kućne žurke</a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+         <li class="nav-item">
+          <a class="nav-link" href="/dashboard">Početna</a>
+        </li>
+  </ul>
+  <form class="form-inline my-2 my-lg-0">
+    <a href="/users/logout" class="btn btn-secondary">Odjavi se</a>    
+  </form>
+  </div>
+</nav>
+
+<div class="horizontalno">
+  <div id="row" class="topdiv">
+    <div id="row" class="filterdiv">   
+      <form action="/users/filter" method="POST">
+        <input name="organizatorzurke" ></input>
+        <div><button type="submit" style="float: left;" class="btn btnnovi btn-primary">Filtriraj po imenu organizatora</button></form>
+      </form>
+    </div>
+  </div>
+
+
+
+    <div id="row" class="topdiv">
+      <div id="row" class="filterdiv">
+        <form action="/users/filterpomuzici" method="POST">
+        
+          <select type="text" id="muzika" name="muzika" >
+            <option>Disco</option>
+            <option>Pop</option>
+            <option>Rock</option>
+            <option>Trap</option>
+            <option>RnB</option>
+            <option>Salsa</option>
+            <option>Folk</option>
+            <option>Pank</option>
+          </select>
+          <div><button type="submit" style="float: left;" class="btn btnnovi btn-primary">Filtriraj po muzici</button></form>
+        </form>
+      </div>
+    </div>
+
+
+      <div id="row" class="topdiv">
+        <div id="row" class="filterdiv">
+          <form action="/users/filterpoadresi" method="POST">
+            <input name="adresa" ></input>
+            <div><button type="submit" style="float: left;" class="btn btnnovi btn-primary">Filtriraj po adresi</button></form>
+          </form>
+        </div>
+      </div>
+
+        <div id="row" class="topdiv">
+          <div id="row" class="filterdiv">
+            <form action="/users/filterpodatumu" method="POST">
+              <!-- <input name="datum" ></input> -->
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="inputGroup-sizing-default">Datum</span>
+                </div>
+                <input type="date" aria-label="Sizing example input" id="datum" name="datum" aria-describedby="inputGroup-sizing-default">
+              </div>
+              <div><button type="submit" style="float: left;" class="btn btnnovi btn-primary">Filtriraj po datumu</button></form>
+            </form>
+          </div>
+
+
+          <div id="row" class="topdiv">
+            <div id="row" class="filterdiv">
+              <form action="/users/filterdatum" method="POST">
+                <!-- <input name="datum" ></input> -->
+                <div class="input-group mb-3">
+                  <!-- <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Datum</span>
+                  </div> -->
+                  <!-- <input type="date" aria-label="Sizing example input" id="datum" name="datum" aria-describedby="inputGroup-sizing-default"> -->
+                  <input class="nevidljivo" name="name" value="<%=name%>"></input>
+                </div>
+                <div><button type="submit" style="float: left;" class="btn btnnovi btn-primary">Pregled samo predstojećih žurki</button></form>
+              </form>
+            </div>
+  </div>
+</div>
+
+<div class="topdiv">
+
+  <% zurka.forEach(function(zurka){ %>
+    
+    <form action="/users/update" method="POST">  
+    <div class="list-group">
+    <a href="#" class="list-group-item list-group-item-action">
+     <div class="d-flex w-100 justify-content-between">
+     <h5 class="mb-1"><%=zurka.organizator%></h5> 
+     </div>
+     <p class="mb-1"><img class="SlikaVelicina" src="http://localhost:3000/<%= zurka.slikaZurke%>"/> </br>Datum: <%=zurka.datum%></br> Adresa: <%=zurka.adresa%></br> Vreme: <%=zurka.vreme%> </br> Muzika: <%=zurka.muzika%> </br> Preostali broj ljudi koji može da pošalje zahtev: <%=zurka.brojljudi%></p>
+     <input class="nevidljivo" name="organizator" value="<%=zurka.organizator%>"></input>
+     <input class="nevidljivo" name="name" value="<%=name%>"></input>
+     <input class="nevidljivo" name="idzurke" value="<%=zurka._id%>"></input>
+     <div>
+    <button type="submit" style="float: right" class="btn btnnovi btn-primary">Pošalji zahtev</button>
+    </form>
+     
+     <form action="/zurke/delete" method="POST">
+     <input class="nevidljivo" name="id" value="<%=zurka._id%>"></input>
+          <%- include('./partials/admin') %>
+     </form>
+
+      
+    <form action="/users/profilkorisnika" method="POST">
+    <input class="nevidljivo" name="organizator" value="<%=zurka.organizator%>"></input>
+    <!-- <h5 class="mb-1"> Poseti profil ovog organizatora:</h5> 
+    <button type="submit" style="float: left" class="btn btnnovi btn-primary"><%=zurka.organizator%></button> -->
+    <!-- <%- include('./partials/profilkorisnika') %> -->
+    <button type="submit" style="float: left;" class="btn btnnovi btn-primary">
+      Profil organizatora
+    </button>
+    </form>
+
+    <form action="/zurke/zurka" method="POST">
+    <input class="nevidljivo" name="_id" value="<%=zurka._id%>"></input>
+    <input class="nevidljivo" name="name" value="<%=name%>"></input>
+    <button type="submit"  style="float: right;" class="btn btnnovi btn-primary">Komentari</button>
+    </form>
+  
+    </div>
+    </a>
+    </div>
+    </form>
+    <% }); %> 
+    </div>
+  </div>
+  </body>
+</html>

@@ -1,0 +1,13 @@
+
+<% if(name == "admin") { %>
+        
+    <a class="nav-link" href="/users/korisnici" >Pregled korisnika</a>
+
+<% } %>
+
+
+<% if(name !== "admin") { %>
+        
+    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Pregled korisnika</a>
+
+<% } %>

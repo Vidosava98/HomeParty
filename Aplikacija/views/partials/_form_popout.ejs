@@ -1,0 +1,62 @@
+<% if(error_msg != '') { %>
+  <div  id="alert" class="alert alert-danger">
+    <strong>Greska!</strong> <%= error_msg %>
+    <span class="close" id="close" onclick="zatvori()">&times;</span>
+  </div>
+<% } %>
+
+
+
+<% if(Dogadjaj==true) { %>     
+<!--<div id="alert" class="alert alert-info">
+  <strong>Info!</strong> Neko vam se odazvao na dogadjaj!
+  <span class="close" id="close" onclick="zatvori()">&times;</span>
+</div>-->
+<div id="alert" class="alert alert-info">
+<form action="/users/updateReverse" method="POST">
+    <strong>Info:  </strong><%=userReq%> vam je poslao zahtev!
+    <button type="submit" class="btn btn-info" >Prihvati</button>
+    <input class="nevidljivo" name="name" value="<%=name%>"></input>
+    <span class="close" id="close" onclick="zatvori()">&times;</span>
+  </form>
+</div>
+
+<% } %>
+
+<% if(Poziv==true) {  %>     
+  <div id="alert" class="alert alert-info">
+    <form action="/pregledzurki" method="GET" >
+        <strong>Info: </strong><%=userReq%> vas je pozvao na svoj dogadjaj.
+      <button type="submit" class="btn btn-info" >Pregledaj njegove žurke</button>
+        <span class="close" id="close" onclick="zatvori()">&times;</span>
+      </form>
+    </div>
+  <% } %>
+
+<% if(Odgovor==true) { %>     
+<!--<div id="alert" class="alert alert-info">
+<strong>Info!</strong> Neko vam se odazvao na dogadjaj!
+<span class="close" id="close" onclick="zatvori()">&times;</span>
+</div>-->
+<form action="/users/updateOdgovor" method="POST">
+<div class="alert alert-info">
+  <strong>Info:  </strong>Prihvaćen vam je zahtev.
+  <button type="submit" class="btn btn-info" style="float: right;" >
+    OK</button>
+  <input class="nevidljivo" name="name" value="<%=name%>"></input>
+
+</div>
+</form>
+
+<% } %>
+
+<script>
+function zatvori(){
+var test=document.getElementById('alert');
+test.style.display="none";
+
+}
+</script>
+
+
+
