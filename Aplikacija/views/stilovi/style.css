@@ -12,6 +12,9 @@ img {
   vertical-align: middle;
 }
 
+.topdiv {
+  padding-top: 70px;
+}
 .container-fluid {
   overflow: hidden;
   padding: 0;
@@ -22,13 +25,13 @@ img {
 }
 
 .nevidljivo {
-  visibility: hidden;
+  display: none !important;
 }
 .SlikaVelicina {
-  max-width: 400px;
-  max-height: 400px;
-  min-width: 150px;
-  min-width: 150px;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin-bottom: 10px;
 }
 .glavniDivProfila {
   display: flex;
@@ -75,10 +78,6 @@ img {
   max-width: 1000px;
   position: relative;
   margin: auto;
-}
-
-.topdiv {
-  padding-top: 70px;
 }
 
 .red {

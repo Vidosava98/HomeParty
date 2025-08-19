@@ -6,7 +6,6 @@ const flash = require("connect-flash");
 const session = require("express-session");
 const passport = require("passport");
 const Zurka = require("./models/Zurka");
-const User = require("./models/User");
 
 const app = express();
 app.use(express.static(__dirname + "/views"));
@@ -59,14 +58,6 @@ app.use("/users", require("./routes/users"));
 app.use("/zurke", require("./routes/zurke"));
 
 //RUTE
-app.get("/pregledzurki", function (req, res) {
-  Zurka.find().then((zurka) => {
-    res.render("pregledzurki", {
-      zurka: zurka,
-      name: req.user.name,
-    });
-  });
-});
 app.get("/_form_changepassword", function (req, res) {
   res.render("_form_changepassword", {
     name: req.user.name,
