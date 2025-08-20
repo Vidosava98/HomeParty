@@ -31,7 +31,7 @@
       <div class="col-md-2">
         <form action="/users/filter" method="POST">
           <input name="organizatorzurke" class="form-control mb-2" placeholder="Organizator" />
-          <button type="submit" class="btn btnnovi btn-primary w-100">Filtriraj</button>
+          <button type="submit" class="btn btn-primary w-100" style="background-color: rgba(216, 97, 97, 0.8);">Filtriraj</button>
         </form>
       </div>
       <div class="col-md-2">
@@ -46,13 +46,13 @@
             <option>Folk</option>
             <option>Pank</option>
           </select>
-          <button type="submit" class="btn btnnovi btn-primary w-100">Filtriraj</button>
+          <button type="submit" class="btn btn-primary w-100" style="background-color: rgba(216, 97, 97, 0.8);">Filtriraj</button>
         </form>
       </div>
       <div class="col-md-2">
         <form action="/users/filterpoadresi" method="POST">
           <input name="adresa" class="form-control mb-2" placeholder="Adresa" />
-          <button type="submit" class="btn btnnovi btn-primary w-100">Filtriraj</button>
+          <button type="submit" class="btn btn-primary w-100" style="background-color: rgba(216, 97, 97, 0.8);">Filtriraj</button>
         </form>
       </div>
       <div class="col-md-3">
@@ -63,13 +63,13 @@
             </div>
             <input type="date" id="datum" name="datum" class="form-control">
           </div>
-          <button type="submit" class="btn btnnovi btn-primary w-100">Filtriraj</button>
+          <button type="submit" class="btn btn-primary w-100" style="background-color: rgba(216, 97, 97, 0.8);">Filtriraj</button>
         </form>
       </div>
       <div class="col-md-3">
         <form action="/users/filterdatum" method="POST">
           <input style="display: none !important;" name="name" value="<%=name%>" />
-          <button type="submit" class="btn btnnovi btn-primary w-100 mb-2">Predstojeće žurke</button>
+          <button type="submit" class="btn btn-primary w-100 mb-2" style="background-color: rgba(216, 97, 97, 0.8);">Predstojeće žurke</button>
         </form>
       </div>
     </div>
@@ -85,7 +85,7 @@
               <input type="hidden" name="name" value="<%=name%>" />
               <div class="d-flex justify-content-between align-items-center">
                 <h5 class="mb-1"><%=zurka.organizator%></h5>
-                <button type="submit" class="btn btnnovi btn-primary">Pošalji zahtev</button>
+                <button type="submit" class="btn btn-primary" style="background-color: rgba(216, 97, 97, 0.8);">Pošalji zahtev</button>
               </div>
               <p class="mt-3">
                 <img style="  max-width: 100%; height: auto; display: block;margin-bottom: 10px;" src="http://localhost:3000/<%= zurka.slikaZurke %>" alt="Slika žurke" class="img-fluid mb-2" />
@@ -100,12 +100,12 @@
           <div class="d-flex gap-2 mt-3 flex-wrap">
             <form action="/users/profilkorisnika" method="POST" class="mr-2">
               <input style="display: none !important;" name="organizator" value="<%=zurka.organizator%>" />
-              <button type="submit" class="btn btnnovi btn-primary">Profil</button>
+              <button type="submit" class="btn btn-primary" style="background-color: rgba(216, 97, 97, 0.8);">Profil</button>
             </form>
             <form action="/zurke/zurka" method="POST" class="mr-2">
               <input style="display: none !important;"name="_id" value="<%=zurka._id%>" />
               <input style="display: none !important;" name="name" value="<%=name%>" />
-              <button type="submit" class="btn btnnovi btn-primary">Komentari</button>
+              <button type="submit" class="btn btn-primary" style="background-color: rgba(216, 97, 97, 0.8);">Komentari</button>
             </form>
             <form action="/zurke/delete" method="POST" class="mr-2">
               <input style="display: none !important;" name="id" value="<%=zurka._id%>" />

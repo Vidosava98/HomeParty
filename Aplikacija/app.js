@@ -69,6 +69,6 @@ app.get("/_form_changeusername", function (req, res) {
   });
 });
 
-const PORT = process.env.PORT || 3000;
+const PORT = 3000;
 
 app.listen(PORT, console.log("Povezan na port 3000..."));

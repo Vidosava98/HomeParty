@@ -7,7 +7,7 @@ router.get("/", (req, res) => {
   res.render("welcome");
 });
 
-router.get("/pregledzurki", function (req, res) {
+router.get("/pregledzurki", ensureAuthenticated,  (req, res) => {
    Zurka.find().then((zurka) => {
      res.render("pregledzurki", {
        zurka: zurka,
@@ -26,7 +26,7 @@ router.get("/dashboard", ensureAuthenticated, (req, res) => {
   });
 });
 
-router.get("/users/profile", ensureAuthenticated, (req, res) => {
+router.get("/profile", ensureAuthenticated, (req, res) => {
   res.render("profile", {
     name: req.user.name,
     email: req.user.email,
@@ -41,7 +41,7 @@ router.get("/organizujzurku", ensureAuthenticated, (req, res) => {
   });
 });
 
-router.get("/users/korisnici", ensureAuthenticated, (req, res) => {
+router.get("/korisnici", ensureAuthenticated, (req, res) => {
   User.find({ name: { $ne: "admin" } }).then((users) => {
     res.render("korisnici", {
       users: users,

@@ -287,24 +287,26 @@ router.post("/update", (req, res, next) => {
 
 router.post("/changepassword", (req, res, next) => {
   const { passwordchange, passwordchange2, passwordchange3 } = req.body;
+  console.log(passwordchange, passwordchange2, passwordchange3);
   var id;
   let errors = [];
+  console.log(req.body.name);
   User.findOne({ name: req.body.name }).then((user) => {
     bcrypt.compare(passwordchange, user.password, (err, isMatch) => {
       if (err) {
         req.flash("error_msg", "Doslo je do greske prilikom promene lozinke.");
-        res.redirect("/users/profile");
+        res.redirect("/profile");
         return;
       }
       if (isMatch) {
         if (passwordchange2 !== passwordchange3) {
           req.flash("error_msg", "Unete sifre se ne poklapaju.");
-          res.redirect("/users/profile");
+          res.redirect("/profile");
           return;
         }
         if (passwordchange2.length < 6) {
           req.flash("error_msg", "Nova sifra mora biti duza od 6 karaktera.");
-          res.redirect("/users/profile");
+          res.redirect("/profile");
           return;
         }
         id = user._id;
@@ -319,19 +321,19 @@ router.post("/changepassword", (req, res, next) => {
                   "error_msg",
                   "Doslo je do greske prilikom menjanja lozinke."
                 );
-                res.redirect("/users/profile");
                 return;
               } else {
                 req.flash("success_msg", "Uspesno ste promenili lozinku.");
-                res.redirect("/users/profile");
+                res.redirect("/profile");
                 return;
               }
             })
           )
         );
       } else {
-        req.flash("error_msg", "Trenutna sifra nije ispravna.");
-        res.redirect("/users/profile");
+        console.log("Niste uneli tacno trenutnu sifru.");
+        req.flash("error_msg", "Niste uneli tacno trenutnu sifru.");
+        res.redirect("/profile");
         return;
       }
     });
@@ -354,17 +356,17 @@ router.post("/changeusername", (req, res, next) => {
         ) {
           if (err) {
             console.log("Greska");
-            res.redirect("/users/profile");
+            res.redirect("/profile");
             return;
           } else {
             console.log("Uspesno");
-            res.redirect("/users/profile");
+            res.redirect("/profile");
             return;
           }
         });
       });
     } else {
-      res.redirect("/users/profile");
+      res.redirect("/profile");
       return;
     }
   });

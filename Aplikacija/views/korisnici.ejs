@@ -29,66 +29,55 @@
 
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-    
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top mb-5">
         <a class="navbar-brand" href="#">Kucne zurke</a>
- 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
-        </button>
-    
+        </button> 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-           
+          <ul class="navbar-nav mr-auto">         
             <li class="nav-item">
              <a class="nav-link" href="/dashboard">Pocetna</a>
            </li>
-          
-        </ul>
+          </ul>
         <form class="form-inline my-2 my-lg-0">
          <a href="/users/logout" class="btn btn-secondary">Odjava</a>
-       </form>
+        </form>
         </div>
-       </nav>
-       <div id="row" class="topdiv">
-        <div id="row" class="filterdiv">   
+    </nav>
+    <div id="row" class="pt-5">   
           <form action="/users/filterkorisnika" method="POST">
-            <div style="margin-left: 5%;"><button type="submit" style="float: left;" class="btn btnnovi btn-primary">Pronađi korisnika po korisničkom imenu: </button></form>
-              <input name="ime_korisnika" ,style="margin-left: 5%;" ></input>
-            </form>
-        </div>
+            <div class="ml-5 mt-5 text-center justify-content-center">
+              <input name="ime_korisnika"/>
+              <button type="submit" class="btn btn-primary" style="background-color:rgba(216, 97, 97, 0.8);">
+              Pronađi korisnika po korisničkom imenu: 
+              </button>
+            </div>
+          </form>
+    </div>
        <!--PrikazKorisnika-->
-       <div class="korisnici">
+    <div class="m-5 p-5">
        <% users.forEach(function(users){ %>
-        <form action="/users/delete" method="POST">
-        <div class="list-group">
-            <a href="#" class="list-group-item list-group-item-action">
+        <div class="bg-light p-5 mb-5">
+          <form action="/users/delete" method="POST">
               <div class="d-flex w-100 justify-content-between">
                 <h5 class="mb-1">Informacije o korisniku</h5>
                 <small class="text-muted">Datum prijavljivaja: <%=users.date.getDate()%>.<%=users.date.getMonth()%>.<%=users.date.getFullYear()%>.</small>
               </div>
               <p class="mb-1">Korisničko ime: <%=users.name%></br>Email: <%=users.email%></p>
-              <input class="nevidljivo" name="id" value="<%=users._id%>"></input>
-             <%-include("./partials/brisi.ejs")%>
-            </form>
-          </a>
-            <form action="/users/pozovi" method="POST"> 
-              <a href="#" class="list-group-item list-group-item-action">
-              <input class="nevidljivo" name="korisnik" value="<%=name%>"></input>
-              <input class="nevidljivo" name="name" value="<%=users.name%>"></input>
-              <input class="nevidljivo" name="id" value="<%=users._id%>"> </input>
-              <button 
-               type="submit" style="float: right" class="btn btnnovi btn-primary">Pozovi korisnika na svoj događaj
-              </button>
-            </form>
-          
-          
-          </a> 
-          </div>
-        
-    
+              <input class="nevidljivo" name="id" value="<%=users._id%>"/>
+              <%-include("./partials/brisi.ejs")%>
+          </form>
+          <form action="/users/pozovi" method="POST"> 
+                <input class="nevidljivo" name="korisnik" value="<%=name%>"/>
+                <input class="nevidljivo" name="name" value="<%=users.name%>"/>
+                <input class="nevidljivo" name="id" value="<%=users._id%>"/>
+                <button 
+                type="submit" style="float: right" class="btn btnnovi btn-primary">Pozovi korisnika na svoj događaj
+                </button>
+          </form> 
+        </div>
         <% }); %> 
     </div>
-  
   </body>
 </html>
